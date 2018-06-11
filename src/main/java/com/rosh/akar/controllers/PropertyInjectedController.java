@@ -1,6 +1,7 @@
 package com.rosh.akar.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 import com.rosh.akar.services.GreetingService;
@@ -9,6 +10,9 @@ import com.rosh.akar.services.GreetingService;
 public class PropertyInjectedController {
 
 	@Autowired
+	@Qualifier("greetingServiceImpl")
+	// Primary bean will override the property name reflection without the qualifier
+	// here
 	public GreetingService greetingServiceImpl;
 
 	public String sayHello() {
